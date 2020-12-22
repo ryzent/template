@@ -31,8 +31,8 @@ android {
         // to the substratum repo rather than anything lower. Keep targetSdkVersion the same.
         minSdkVersion 24
         // Both versions must be changed to increment on Play Store/user's devices
-        versionCode 02
-        versionName "BETA-02"
+        versionCode 03
+        versionName "BETA-03"
 
         // Themers: DO NOT MODIFY
         buildConfigField "boolean", "SUPPORTS_THIRD_PARTY_SYSTEMS", "" + SUPPORTS_THIRD_PARTY_SYSTEMS
@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.github.javiersantos:PiracyChecker:1.2.5'
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
     implementation("androidx.appcompat:appcompat:1.0.2")
+    implementation 'com.anjlab.android.iab.v3:library:1.1.0'
 }
 
 // Themers: DO NOT MODIFY ANYTHING BELOW

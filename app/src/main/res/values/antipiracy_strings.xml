@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <string name="toast_unlicensed">This copy of %s is not licensed!</string>
     <string name="unauthorized">This theme located a few piracy tools installed. Please uninstall them to continue.</string>

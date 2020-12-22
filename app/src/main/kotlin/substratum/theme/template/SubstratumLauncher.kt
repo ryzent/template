@@ -2,25 +2,29 @@
 
 package substratum.theme.template
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import android.util.Log
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.widget.*
+import com.anjlab.android.iab.v3.BillingProcessor
+import com.anjlab.android.iab.v3.TransactionDetails
 import com.github.javiersantos.piracychecker.*
-import com.github.javiersantos.piracychecker.enums.*
+import com.github.javiersantos.piracychecker.enums.InstallerID
 import com.github.javiersantos.piracychecker.utils.apkSignature
 import substratum.theme.template.AdvancedConstants.ORGANIZATION_THEME_SYSTEMS
 import substratum.theme.template.AdvancedConstants.OTHER_THEME_SYSTEMS
-import substratum.theme.template.AdvancedConstants.SHOW_DIALOG_REPEATEDLY
-import substratum.theme.template.AdvancedConstants.SHOW_LAUNCH_DIALOG
 import substratum.theme.template.ThemeFunctions.checkApprovedSignature
 import substratum.theme.template.ThemeFunctions.getSelfSignature
 import substratum.theme.template.ThemeFunctions.getSelfVerifiedPirateTools
 import substratum.theme.template.ThemeFunctions.isCallingPackageAllowed
+import substratum.theme.template.BuildConfig
+import substratum.theme.template.R
 
 /**
  * NOTE TO THEMERS
@@ -32,7 +36,8 @@ import substratum.theme.template.ThemeFunctions.isCallingPackageAllowed
  * The more you play with this the harder it would be to decompile and crack!
  */
 
-class SubstratumLauncher : Activity() {
+class SubstratumLauncher : Activity(), BillingProcessor.IBillingHandler {
+    private var bp: BillingProcessor? = null
 
     private val debug = false
     private val tag = "SubstratumThemeReport"
@@ -51,6 +56,9 @@ class SubstratumLauncher : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        /*TODO replace the null with license key from play console (developement tools > service & APIs)*/
+        bp = BillingProcessor(this, "ffffffffffffff", this)
+
         /* STEP 1: Block hijackers */
         val caller = callingActivity!!.packageName
         val organizationsSystem = ORGANIZATION_THEME_SYSTEMS.contains(caller)
@@ -68,7 +76,7 @@ class SubstratumLauncher : Activity() {
 
         /* STEP 2: Ensure that our support is added where it belongs */
         val action = intent.action
-        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+//        val sharedPref = getPreferences(Context.MODE_PRIVATE)
         var verified = false
         if ((action == substratumIntentData) or (action == getKeysIntent)) {
             // Assume this called from organization's app
@@ -81,7 +89,7 @@ class SubstratumLauncher : Activity() {
         } else {
             OTHER_THEME_SYSTEMS
                     .filter { action?.startsWith(prefix = it, ignoreCase = true) ?: false }
-                    .forEach { verified = true }
+                    .forEach { _ -> verified = true }
         }
         if (!verified) {
             Log.e(tag, "This theme does not support the launching theme system. ($action)")
@@ -93,21 +101,36 @@ class SubstratumLauncher : Activity() {
             Log.d(tag, "'$action' has been authorized to launch this theme. (Phase 2)")
         }
 
+        showDialog()
+    }
 
-        /* STEP 3: Do da thang */
-        if (SHOW_LAUNCH_DIALOG) run {
-            if (SHOW_DIALOG_REPEATEDLY) {
-                showDialog()
-                sharedPref.edit().remove("dialog_showed").apply()
-            } else if (!sharedPref.getBoolean("dialog_showed", false)) {
-                showDialog()
-                sharedPref.edit().putBoolean("dialog_showed", true).apply()
-            } else {
-                startAntiPiracyCheck()
-            }
-        } else {
-            startAntiPiracyCheck()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (!bp!!.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    override fun onProductPurchased(productId: String, details: TransactionDetails?) {
+
+    }
+
+    override fun onPurchaseHistoryRestored() {
+
+    }
+
+    override fun onBillingError(errorCode: Int, error: Throwable?) {
+
+    }
+
+    override fun onBillingInitialized() {
+
+    }
+
+    public override fun onDestroy() {
+        if (bp != null) {
+            bp!!.release()
+        }
+        super.onDestroy()
     }
 
     private fun startAntiPiracyCheck() {
@@ -183,24 +206,85 @@ class SubstratumLauncher : Activity() {
         }
     }
 
+    @SuppressLint("InflateParams")
     private fun showDialog() {
-        val dialog = AlertDialog.Builder(this, R.style.DialogStyle)
+
+        val alertDialog = AlertDialog.Builder(this, R.style.DialogStyle)
                 .setCancelable(false)
-                .setIcon(R.mipmap.ic_launcher)
-                .setTitle(R.string.launch_dialog_title)
-                .setMessage(R.string.launch_dialog_content)
-                .setPositiveButton(R.string.launch_dialog_positive) { _, _ -> startAntiPiracyCheck() }
-        if (getString(R.string.launch_dialog_negative).isNotEmpty()) {
-            if (getString(R.string.launch_dialog_negative_url).isNotEmpty()) {
-                dialog.setNegativeButton(R.string.launch_dialog_negative) { _, _ ->
-                    startActivity(Intent(Intent.ACTION_VIEW,
-                            Uri.parse(getString(R.string.launch_dialog_negative_url))))
-                    finish()
-                }
+        val view = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
+        val title = view.findViewById(R.id.title) as TextView
+        title.text = getString(R.string.launch_dialog_title)
+
+        /*Buttons*/
+        val changelog = view.findViewById(R.id.changelog) as ImageButton
+        changelog.setImageResource(R.drawable.ic_changelog)
+        changelog.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_changelog))))
+        }
+        val playstore = view.findViewById(R.id.playstore) as ImageButton
+        playstore.setImageResource(R.drawable.ic_playstore)
+        playstore.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_playstore))))
+        }
+        val telegram = view.findViewById(R.id.telegram) as ImageButton
+        telegram.setImageResource(R.drawable.ic_telegram)
+        telegram.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_telegram))))
+        }
+        val paypal = view.findViewById(R.id.paypal) as ImageButton
+        paypal.setImageResource(R.drawable.ic_paypal)
+        paypal.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_paypal))))
+        }
+        val gallery = view.findViewById(R.id.gallery) as ImageButton
+        gallery.setImageResource(R.drawable.ic_gallery)
+        gallery.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_gallery))))
+        }
+        val twitter = view.findViewById(R.id.twitter) as ImageButton
+        twitter.setImageResource(R.drawable.ic_twitter)
+        twitter.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.link_twitter))))
+        }
+        val cont = view.findViewById(R.id.button_continue) as Button
+        cont.setOnClickListener {
+            startAntiPiracyCheck()
+        }
+        /*TODO replace the product id */
+        val donate = view.findViewById(R.id.button_donate) as Button
+        donate.setOnClickListener {
+            bp!!.purchase(this, "coffee")
+            finish()
+        }
+        /*Checkbox*/
+        val myCheckBox = view.findViewById(R.id.myCheckBox) as CheckBox
+        myCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                storeDialogStatus(true)
             } else {
-                dialog.setNegativeButton(R.string.launch_dialog_negative) { _, _ -> finish() }
+                storeDialogStatus(false)
             }
         }
-        dialog.show()
+
+        alertDialog.setView(view)
+
+        if (getDialogStatus()) {
+            startAntiPiracyCheck()
+        } else {
+            alertDialog.show()
+        }
+
+    }
+
+    private fun storeDialogStatus(isChecked: Boolean) {
+        val mSharedPreferences = getSharedPreferences("dialog", Context.MODE_PRIVATE)
+        val mEditor = mSharedPreferences.edit()
+        mEditor.putBoolean("show_dialog_" + BuildConfig.VERSION_CODE, isChecked)
+        mEditor.apply()
+    }
+
+    private fun getDialogStatus(): Boolean {
+        val mSharedPreferences = getSharedPreferences("dialog", Context.MODE_PRIVATE)
+        return mSharedPreferences.getBoolean("show_dialog_" + BuildConfig.VERSION_CODE, false)
     }
 }
