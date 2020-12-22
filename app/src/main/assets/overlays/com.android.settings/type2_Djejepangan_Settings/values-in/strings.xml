@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="network_dashboard_title">Network &amp; internet - 通信網</string>
+    <string name="connected_devices_dashboard_title">Connected devices - 接続されたデバイス</string>
+    <string name="app_and_notification_dashboard_title">Apps &amp; notifications - アプリと通知</string>
+    <string name="power_usage_summary_title">Battery - 電池</string>
+    <string name="display_settings">Display - 表示</string>
+    <string name="sound_settings">Sound - 音</string>
+    <string name="storage_settings" >Storage - ストレージ</string>
+    <string name="privacy_dashboard_title">Privacy - プライバシー</string>
+    <string name="location_settings_title">Location - ロケーション</string>
+    <string name="security_settings_title">Security - セキュリティ</string>
+    <string name="account_dashboard_title">Accounts - アカウント</string>
+    <string name="accessibility_settings">Accessibility - アクセシビリティ</string>
+    <string name="header_category_system">System - システム</string>
+    <string name="search_menu">Search - 検索中</string>
+    <string name="about_settings" product="default">About phone - 電話について</string>
+
+    <string name="rr_tools_category">Resurrection tools - 復活ツール</string>
+    <string name="rr_title">Resurrection tools - 復活ツール</string>
+    <string name="extended_version">Extended version - バージョン</string>
+
+    <string name="dirtytweaks_title">Tweaks - 微調整</string>
+    <string name="du_themes_title">Themes - テーマ</string>
+
+    <string name="navigation_system_title">システム</string>
+    <string name="navigation_lockscreen_title">ロック画面</string>
+    <string name="navigation_statusbar_title">ステータスバー</string>
+    <string name="navigation_hardware_title">金物</string>
+    <string name="navigation_multitasking_title">マルチタスク</string>
+    <string name="bottom_nav_system_title">システム</string>
+    <string name="bottom_nav_lockscreen_title">ロック画面</string>
+    <string name="bottom_nav_statusbar_title">ステータスバー</string>
+    <string name="bottom_nav_hardware_title">金物</string>
+    <string name="bottom_nav_multitasking_title">マルチタスク</string>
+    <string name="miscellaneous_title">Miscellaneous - その他</string>
+    <string name="powermenu_title">Power menu - 電源メニュー</string>
+    <string name="notifications_title">Notifications - 通知</string>
+    <string name="fingerprint_prefs_title">Fingerprint prefs - 指紋設定</string>
+    <string name="lockscreen_items_title">Lockscreen items - ロック画面アイテム</string>
+    <string name="switch_settings_title">Misc lockscreen settings - その他のロック画面設定</string>
+    <string name="battery_options_title">Battery options - バッテリーオプション</string>
+    <string name="carrier_label_title">Carrier label - キャリアラベル</string>
+    <string name="clock_options_title">Clock options - 時計のオプション</string>
+    <string name="icon_manager_title">Icon manager - アイコンマネージャー</string>
+    <string name="quicksettings_title">Quick settings - クイック設定</string>
+    <string name="traffic_title">Traffic indicators - 交通指標</string>
+    <string name="switch_category">Advanced Tweaks - 高度な調整</string>
+    <string name="buttons_title">Buttons - ボタン</string>
+    <string name="navigation_options_title">Navigation - ナビゲーション</string>
+    <string name="themes_title">Themes - テーマ</string>
+    <string name="nad_parts_title">Nusantara Parts - デバイスパーツ</string>
+
+    <string name="firmware_version">Android version - アンドロイド版</string>
+    <string name="nad_version">Nusantara version - バージョン</string>
+    <string name="maintainer">Maintainer - メンテナ</string>
+    <string name="security_patch">Security Patch - セキュリティ</string>
+    <string name="baseband_version">Baseband version - ベースバンドバージョン</string>
+    <string name="kernel_version">Kernel version - カーネルバージョン</string>
+    <string name="build_date">Build date - 建設日</string>
+    <string name="build_number">Build number - ビルド番号</string>
+    <string name="selinux_status">SELinux status - 状態</string>
+    <string name="module_version">Google Play  Version - システムアップデート</string>
+
+    <string name="rr_version_info">Resurrection Remix - ビルドバージョン</string>
+    <string name="rr_build_type">Build type - ビルドタイプ</string>
+    <string name="crvs_version">Corvus version そのうちの</string>
+
+
+    <string name="page_tab_title_support">Help - アシスト</string>
+    <string name="evolution_settings_title">Evo X - カスタム</string>
+    <string name="derp_settings_title">Derp Fest - カスタム</string>
+    <string name="x_settings_title">X Tended - カスタム</string>
+    <string name="nest_title">Owls - カスタム</string>
+    <string name="advanced_settings">Advanced - アドバンスド</string>
+    <string name="ion_ionizer_title">Ion - カスタム</string>
+    <string name="header_category_omni">Omni - カスタム</string>
+    <string name="zen_hub_title">Zen Hub - カスタム</string>
+    <string name="blissify_title">Blissify - カスタム</string>
+    <string name="config_center_title">Havoc - カスタム</string>
+    <string name="crdroid_settings_title">Cr Droid - カスタム</string>
+
+    <string name="changelog_title">Changelog - 変更ログ</string>
+    <string name="system_update_settings_list_item_title">System Update - システムアップデート</string>
+    <string name="wifi">Wi-Fi - わいふぁい</string>
+    <string name="network_settings_title">Mobile Network - モバイルネットワーク</string>
+    <string name="airplane_mode">Airplane mode - 機内モード</string>
+    <string name="tether_settings_title_all">Hotspot - ホットスポット</string>
+    <string name="condition_bg_data_title">Data Saver - データセーバー</string>
+    <string name="vpn_settings_title">VPN - ぶいぴいえぬ</string>
+    <string name="select_private_dns_configuration_title">Private DNS - プライベート ぢえねす</string>
+    <string name="about_device_name">Device - デバイス</string>
+    <string name="my_device_info_device_name_preference_title">Device Name - デバイス</string>
+    <string name="data_saver_title">Data Saver - データセーバー</string>
+    <string name="bluetooth_pairing_pref_title">Pair New Device - 新しいデバイスをペアリングする</string>
+    <string name="connected_device_connections_title">Connection Preferences - 接続設定</string>
+    <string name="notifications_label">Notifications - 通知</string>
+    <string name="app_default_dashboard_title">Default Apps - デフォルトのアプリ</string>
+    <string name="app_permissions">Permission Manager - パーミッションマネージャー</string>
+    <string name="cell_broadcast_settings">Emergency Alerts - 緊急警報</string>
+    <string name="special_access">Special App Access - 特別なアプリへのアクセス</string>
+    <string name="battery_saver">Battery Saver - バッテリーセーバー</string>
+    <string name="auto_brightness_title">Adaptive brightness - 適応輝度</string>
+    <string name="night_display_title">Night Light - 夜の光</string>
+    <string name="tap_to_wake">Tap To Wake - タップしてウェイクアップ</string>
+    <string name="screen_zoom_title">Display size - ディスプレイサイズ</string>
+    <string name="developer_smallest_width">Smallest width - 最小幅</string>
+    <string name="title_font_size">Font size - フォントサイズ</string>
+    <string name="graphics_driver_app_preference_game_driver">Game Driver - ゲームドライバー</string>
+    <string name="display_vr_pref_title">When device is in VR - デバイスがVRの場合</string>
+    <string name="screensaver_settings_title">Screen Saver - スクリーンセーバー</string>
+    <string name="adaptive_sleep_title">Screen Attention - 画面の注意</string>
+    <string name="screen_timeout">Screen Timeout - 画面のタイムアウト</string>
+    <string name="zen_mode_settings_title">Do Not Disturb - 邪魔しないでください</string>
+    <string name="gesture_prevent_ringing_sound_title">Shortcut to Prevent Ringing - リンギングを防ぐためのショートカット</string>
+    <string name="ringtone_title">Phone Ringtone - 着信音</string>
+    <string name="notification_ringtone_title">Default Notification Sound - デフォルトの通知音</string>
+    <string name="notification_sound_default">Default Notification Sound - デフォルトの通知音</string>
+    <string name="notification_sound_dialog_title">Default Notification Sound - デフォルトの通知音</string>
+    <string name="notification_sound_title">Default Notification Sound - デフォルトの通知音</string>
+    <string name="alarm_ringtone_title">Default Alarm Sound - デフォルトのアラーム音</string>
+    <string name="dial_pad_tones_title">Dial Pad Tones - ダイヤルパッドトーン</string>
+    <string name="screen_locking_sounds_title">Screen Locking Sound - 画面ロック音</string>
+    <string name="charging_sounds_title">Charging Sounds - 充電音と振動</string>
+    <string name="touch_sounds_title">Touch Sounds - タッチサウンド</string>
+    <string name="vibrate_on_touch_title">Touch Vibration - タッチ振動</string>
+    <string name="screenshot_sound_title">Screenshot Sound - スクリーンショットサウンド</string>
+
+    <string name="settings_title_with_parental_controls">Wellbeing - 親のコントロール</string>
+    <string name="core_google_platform_settings">G Account - グーグル</string>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+
+    <string name="power_off">Power off</string>
+    <string name="reboot_message">Rebooting system</string>
+    <string name="reboot_safemode_confirm">Do you want to reboot into safe mode? This will disable all third party applications you have installed. They will be restored when you reboot again.</string>
+    <string name="reboot_safemode_title">Reboot to safe mode</string>
+    <string name="reboot_title">Reboot</string>
+    <string name="reboot_to_bootloader_message">Rebooting to bootloader</string>
+    <string name="reboot_to_bootloader_title">Bootloader</string>
+    <string name="reboot_to_recovery_message">Rebooting to recovery</string>
+    <string name="reboot_to_recovery_title">Recovery</string>
+    <string name="reboot_to_reset_message">Restarting…</string>
+    <string name="reboot_to_reset_title">Factory data reset</string>
+    <string name="reboot_to_update_package">Processing the update package…</string>
+    <string name="reboot_to_update_prepare">Preparing to update…</string>
+    <string name="reboot_to_update_reboot">Restarting…</string>
+    <string name="reboot_to_update_title">Android system update</string>
+
+    <string name="global_action_assist">Assist</string>
+    <string name="global_action_bug_report">Bug report</string>
+    <string name="global_action_emergency">Emergency</string>
+    <string name="global_action_lock">Screen lock</string>
+    <string name="global_action_lockdown">Lockdown</string>
+    <string name="global_action_logout">End session</string>
+    <string name="global_action_power_off">Power off</string>
+    <string name="global_action_restart">Restart</string>
+    <string name="global_action_screenshot">Screenshot</string>
+    <string name="global_action_settings">Settings</string>
+    <string name="global_action_silent_mode_off_status">Sound is ON</string>
+    <string name="global_action_silent_mode_on_status">Sound is OFF</string>
+    <string name="global_action_toggle_silent_mode">Silent mode</string>
+    <string name="global_action_voice_assist">Voice Assist</string>
+    <string name="global_actions">Phone options</string>
+    <string name="global_actions_airplane_mode_off_status">Airplane mode is OFF</string>
+    <string name="global_actions_airplane_mode_on_status">Airplane mode is ON</string>
+    <string name="global_actions_toggle_airplane_mode">Airplane mode</string>
+
+    <string name="silent_mode">Silent mode</string>
+    <string name="silent_mode_ring">Ringer on</string>
+    <string name="silent_mode_silent">Ringer off</string>
+    <string name="silent_mode_vibrate">Ringer vibrate</string>
+</resources>
